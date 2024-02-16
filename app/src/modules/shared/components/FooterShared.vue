@@ -1,8 +1,28 @@
 <template>
-    <div>
-        <h3>Adrián Catalán | Web development & graphic design</h3>
-        <h3>© 2023 by Adrián Catalán</h3>
+    <div class="footer">
+        <h3 class="footer-text">Adrián Catalán | Web Development & Graphic Design</h3>
+        <h3 class="footer-text">© {{ year }} by Adrián Catalán</h3>
     </div>
 </template>
 
-<style ></style>
+<script>
+export default {
+    name: 'FooterShared',
+    data() {
+        return {
+            year: null
+        }
+    },
+    methods: {
+        getYear() {
+            this.date = new Date().getFullYear()
+        }
+    },
+    created() {
+        this.getYear()
+    }
+}
+
+</script>
+
+<style src="../assets/footer.scss" scoped></style>
