@@ -1,10 +1,8 @@
 <template>
   <div class="navigaton-shared">
     <NavigationShared />
-    <div class="navigaton-shared-views-footer">
-      <router-view></router-view>
-      <FooterShared />
-    </div>
+    <router-view></router-view>
+    <FooterShared />
   </div>
 </template>
 
@@ -28,13 +26,6 @@ body {
 }
 
 .navigaton-shared {
-  display: flex;
-
-  &-views-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    width: 100%;
-  }
+  width: 100%;
 }
 </style>
