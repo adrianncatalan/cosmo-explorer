@@ -1,5 +1,7 @@
 <template>
-    <h2 class="title">{{ info }}</h2>
+    <div>
+        <h2 class="title">{{ info }}</h2>
+    </div>
 </template>
 <script>
 export default {
@@ -10,4 +12,3 @@ export default {
     },
 }
 </script>
-<style src="../assets/title.scss" scoped></style>

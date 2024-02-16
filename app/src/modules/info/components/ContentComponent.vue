@@ -6,10 +6,3 @@
         </p>
     </div>
 </template>
-
-<script>
-export default {
-
-}
-</script>
-<style src="../assets/content.scss" scoped></style>

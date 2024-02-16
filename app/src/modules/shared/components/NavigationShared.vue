@@ -10,9 +10,3 @@
         <router-link class="nav-link" :to="{name:'exoplanet'}">EXOPLANET</router-link>
     </div>
 </template>
-<script>
-export default {
-
-}
-</script>
-<style src="../assets/navigation.scss" scoped></style>
