@@ -4,13 +4,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  background-color: $secondary-color;
+  background-color: $primary-color;
 
   &-text {
     color: $text-color;
     font-family: $space-text;
-    font-size: 12px;
+    font-size: 1em;
     color: $text-color-footer;
+    text-align: center;
   }
 }

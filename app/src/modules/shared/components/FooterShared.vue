@@ -1,7 +1,7 @@
 <template>
     <div class="footer">
-        <h3 class="footer-text">Adrián Catalán | Web Development & Graphic Design</h3>
-        <h3 class="footer-text">© {{ year }} by Adrián Catalán</h3>
+        <h3 class="footer-text">{{ year }} Adrián Catalán | Web Development & Graphic Design</h3>
+        <h3 class="footer-text">© All copyrights and intellectual property rights belong to NASA. This site is not affiliated with or endorsed by NASA.</h3>
     </div>
 </template>
 
@@ -15,10 +15,10 @@ export default {
     },
     methods: {
         getYear() {
-            this.date = new Date().getFullYear()
+            this.year = new Date().getFullYear()
         }
     },
-    created() {
+    mounted() {
         this.getYear()
     }
 }
