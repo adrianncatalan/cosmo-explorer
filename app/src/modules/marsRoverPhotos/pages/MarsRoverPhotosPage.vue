@@ -3,15 +3,13 @@
         <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 pt-6 flex justify-center text-center flex-col px-5">
             Mars Rover Snapshots: Exploring the Red Planet</h2>
         <p class="mt-4 text-gray-500 flex justify-center text-center px-20 pb-12">Discover Mars through the lens of our Mars
-            Rover Snapshots collection. Explore captivating images captured by the rovers as they traverse the Martian
-            landscape, providing valuable insights into the geology, atmosphere, and potential habitability of the Red
-            Planet. Join us on this journey of discovery as we unravel the mysteries of Mars, one snapshot at a time.</p>
+            Rover Snapshots collection.</p>
 
         <ul role="list" class="mb-12 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
             <li v-for="(photo, index) in photos.slice(0, 4)" :key="index" class="relative">
                 <div
                     class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                    <a :href="photo.imgSrc" class="inline-block">
+                    <a target="_blank" :href="photo.imgSrc" class="inline-block">
                         <img :src="photo.imgSrc" alt="Mars Rover Photo"
                             class="object-cover pointer-events-none group-hover:opacity-75">
                     </a>
@@ -28,7 +26,7 @@
             <li v-for="(photo, index) in photos.slice(842, 846)" :key="index" class="relative">
                 <div
                     class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                    <a :href="photo.imgSrc" class="inline-block">
+                    <a target="_blank" :href="photo.imgSrc" class="inline-block">
                         <img :src="photo.imgSrc" alt="Mars Rover Photo"
                             class="object-cover pointer-events-none group-hover:opacity-75">
                     </a>
@@ -44,7 +42,7 @@
             <li v-for="(photo, index) in photos.slice(266, 286)" :key="index" class="relative">
                 <div
                     class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
-                    <a :href="photo.imgSrc" class="inline-block">
+                    <a target="_blank" :href="photo.imgSrc" class="inline-block">
                         <img :src="photo.imgSrc" alt="Mars Rover Photo"
                             class="object-cover pointer-events-none group-hover:opacity-75">
                     </a>
