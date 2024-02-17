@@ -1,7 +1,6 @@
 const fetchNasaData = async (url) => {
-    const apiKey = '?api_key=rpo5wzh8LQhqRBKBCGx7zykC3ncMqwyaByW2GU7o';
     try {
-        const response = await fetch(`${url + apiKey}`);
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error("Error in response!");
         } else {

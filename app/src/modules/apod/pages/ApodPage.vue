@@ -34,7 +34,7 @@ export default {
             url: null,
             copyright: null,
             date: null,
-            apodEndpoint: 'https://api.nasa.gov/planetary/apod'
+            apodEndpoint: 'https://api.nasa.gov/planetary/apod?api_key=rpo5wzh8LQhqRBKBCGx7zykC3ncMqwyaByW2GU7o'
         }
     },
     methods: {
