@@ -2,7 +2,6 @@
     <div class="relative bg-white">
         <div class="lg:absolute lg:inset-0">
             <div class="lg:absolute lg:inset-y-0 lg:left-0 lg:w-1/2">
-                <!-- Indicador de carga para la imagen -->
                 <div v-if="loading" class="h-56 w-full bg-gray-200 animate-pulse">Loading data...</div>
                 <img v-else class="h-56 w-full object-cover lg:absolute lg:h-full" loading="lazy" :src="url" :alt="title">
             </div>
@@ -28,7 +27,7 @@ import { fetchNasaData } from "../../shared/services/nasaApiService.js";
 export default {
     data() {
         return {
-            loading: true, // Agregamos una variable para el estado de carga
+            loading: true, 
             apod: 'APOD: Astronomy Picture of the Day',
             title: null,
             explanation: null,
