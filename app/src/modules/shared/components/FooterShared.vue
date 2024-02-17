@@ -12,7 +12,7 @@
                 &copy; {{ copyrights }}
             </p>
             <p class="mt-8 text-center text-base text-gray-500">
-                {{ year }} {{ authorWebSite }}
+                &copy; {{ year }} {{ authorWebSite }}
             </p>
         </div>
     </footer>
