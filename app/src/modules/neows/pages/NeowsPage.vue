@@ -11,7 +11,10 @@
       </div>
       <div class="mt-5 border-t border-gray-200">
         <dl class="divide-y divide-gray-200">
-          <div v-for="asteroid in asteroids" :key="asteroid.id" class="py-4 sm:grid sm:py-5 sm:grid-cols-7 sm:gap-4">
+          <div v-if="loading" class="text-center mt-5">
+            <p class="text-gray-500 h-56 w-full bg-gray-200 animate-pulse">Loading data...</p>
+          </div>
+          <div v-else v-for="asteroid in asteroids" :key="asteroid.id" class="py-4 sm:grid sm:py-5 sm:grid-cols-7 sm:gap-4">
             <dt class="text-sm text-gray-500 text-center">
               <p class="font-medium">Name</p>
               <p>{{ asteroid.name }}</p>
@@ -52,6 +55,7 @@
   export default {
     data() {
       return {
+        loading: true,
         asteroids: [],
         neowsEndpoint: 'https://api.nasa.gov/neo/rest/v1/neo/browse'
       }
@@ -63,6 +67,8 @@
           this.asteroids = response.near_earth_objects;
         } catch (error) {
           console.error("Error fetching data:", error);
+        } finally {
+          this.loading = false;
         }
       }
     },

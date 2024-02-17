@@ -2,7 +2,9 @@
     <div class="relative bg-white">
         <div class="lg:absolute lg:inset-0">
             <div class="lg:absolute lg:inset-y-0 lg:left-0 lg:w-1/2">
-                <img class="h-56 w-full object-cover lg:absolute lg:h-full" loading="lazy" :src="url" :alt="title">
+                <!-- Indicador de carga para la imagen -->
+                <div v-if="loading" class="h-56 w-full bg-gray-200 animate-pulse">Loading data...</div>
+                <img v-else class="h-56 w-full object-cover lg:absolute lg:h-full" loading="lazy" :src="url" :alt="title">
             </div>
         </div>
         <div class="relative pt-12 pb-16 px-4 sm:pt-16 sm:px-6 lg:px-8 lg:max-w-7xl
@@ -26,6 +28,7 @@ import { fetchNasaData } from "../../shared/services/nasaApiService.js";
 export default {
     data() {
         return {
+            loading: true, // Agregamos una variable para el estado de carga
             apod: 'APOD: Astronomy Picture of the Day',
             title: null,
             explanation: null,
@@ -37,12 +40,19 @@ export default {
     },
     methods: {
         async extractingData() {
-            const { title, explanation, url, copyright, date } = await fetchNasaData(this.apodEndpoint)
-            this.title = title
-            this.explanation = explanation
-            this.url = url
-            this.copyright = copyright
-            this.date = date
+            try {
+                this.loading = true;
+                const { title, explanation, url, copyright, date } = await fetchNasaData(this.apodEndpoint)
+                this.title = title
+                this.explanation = explanation
+                this.url = url
+                this.copyright = copyright
+                this.date = date
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                this.loading = false;
+            }
         }
     },
 
@@ -51,6 +61,3 @@ export default {
     }
 }
 </script>
-<style lang="">
-    
-</style>
