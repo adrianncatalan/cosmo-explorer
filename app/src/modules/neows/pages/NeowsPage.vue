@@ -1,16 +1,12 @@
 <template>
   <div class="bg-white shadow overflow-hidden sm:rounded-lg p-12">
     <div>
-      <span class="block text-base text-center text-indigo-600 font-semibold tracking-wide">Asteroids NeoWs: Near Earth
-        Object Web Service</span>
-      <h3 class="text-lg mt-2 text-center leading-6 font-medium text-gray-900">
+      <h3 class="my-8 text-3xl leading-8 font-extrabold tracking-tight
+                    bg-gradient-to-r from-indigo-500 sm:text-4xl">Asteroids NeoWs: Near Earth
+        Object Web Service</h3>
+      <h3 class="text-lg mt-2 text-center leading-6 font-medium text-indigo-600 ">
         Earth orbiting asteroid information
       </h3>
-      <p class="mt-2 text-center text-sm text-gray-500">
-        For each asteroid in the list, the following information is displayed: name, estimated maximum diameter, estimated
-        minimum Diameter, orbit class description, orbit class range, absolute magnitude (H), potentially hazardous
-        asteroids.
-      </p>
     </div>
     <div class="mt-5 border-t border-gray-200">
       <dl class="divide-y divide-gray-200">

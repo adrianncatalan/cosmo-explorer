@@ -1,9 +1,10 @@
 <template>
     <div class="m-6">
-        <h2 class="text-2xl font-extrabold tracking-tight text-gray-900 pt-6 flex justify-center text-center flex-col px-5">
-            Mars Rover Snapshots: Exploring the Red Planet</h2>
-        <p class="mt-4 text-gray-500 flex justify-center text-center px-20 pb-12">Discover Mars through the lens of our Mars
-            Rover Snapshots collection.</p>
+        <h3 class="my-8 text-3xl leading-8 font-extrabold tracking-tight 
+                    bg-gradient-to-r from-indigo-500 sm:text-4xl">Mars Rover Snapshots: Exploring the Red Planet</h3>
+        <h3 class="text-lg mt-2 text-center leading-6 font-medium text-indigo-600 ">Discover Mars through the lens of our
+            Mars
+            Rover Snapshots collection.</h3>
 
         <ul role="list" class="mb-12 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
             <li v-for="(photo, index) in photos.slice(0, 4)" :key="index" class="relative">

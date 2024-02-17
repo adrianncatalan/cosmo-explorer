@@ -15,7 +15,7 @@
           uppercase">{{ copyright }} - {{ date }}</h2>
                     <h3 class="my-8 text-3xl leading-8 font-extrabold tracking-tight
                     bg-gradient-to-r from-indigo-500 sm:text-4xl">{{ title }}</h3>
-                    <p class="text-xl">{{ explanation }}</p>
+                    <p class="text-base">{{ explanation }}</p>
                 </div>
             </div>
         </div>
