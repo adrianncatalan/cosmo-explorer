@@ -60,7 +60,7 @@ export default {
     return {
       loading: true,
       asteroids: [],
-      neowsEndpoint: 'https://api.nasa.gov/neo/rest/v1/neo/browse'
+      neowsEndpoint: 'https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=REPLACED'
     }
   },
   methods: {
