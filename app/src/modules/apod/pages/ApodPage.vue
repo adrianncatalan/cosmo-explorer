@@ -2,8 +2,11 @@
     <div class="relative bg-white">
         <div class="lg:absolute lg:inset-0">
             <div class="lg:absolute lg:inset-y-0 lg:left-0 lg:w-1/2">
-                <div v-if="loading" class="h-56 w-full bg-gray-200 animate-pulse">Loading data...</div>
-                <img v-else class="h-56 w-full object-cover lg:absolute lg:h-full" loading="lazy" :src="url" :alt="title">
+                <div v-if="loading" class="text-center mt-20">
+                    <p class="text-gray-500 ">Loading data...</p>
+                </div>
+                <img v-else class="h-56 w-full object-cover lg:absolute lg:h-full" loading="lazy" :src="url"
+                    :alt="title">
             </div>
         </div>
         <div class="relative pt-12 pb-16 px-4 sm:pt-16 sm:px-6 lg:px-8 lg:max-w-7xl
@@ -21,13 +24,14 @@
         </div>
     </div>
 </template>
+
 <script>
 import { fetchNasaData } from "../../shared/services/nasaApiService.js";
 
 export default {
     data() {
         return {
-            loading: true, 
+            loading: true,
             apod: 'APOD: Astronomy Picture of the Day',
             title: null,
             explanation: null,
