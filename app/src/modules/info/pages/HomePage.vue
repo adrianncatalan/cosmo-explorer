@@ -24,7 +24,7 @@
                         <figure>
                             <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
                                 <img class="rounded-lg shadow-lg object-cover object-center"
-                                    src="https://w.forfun.com/fetch/11/119da6481bbd0d0b6cb0ed9a62634e61.jpeg"
+                                    src="https://i.postimg.cc/VsRjKM6S/drinking-space-astronaut.jpg"
                                     alt="Astronaut on the Moon with bee" width="1184" height="1376">
                             </div>
                             <figcaption class="mt-3 flex text-sm text-gray-500">

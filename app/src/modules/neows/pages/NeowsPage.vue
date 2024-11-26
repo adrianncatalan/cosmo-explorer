@@ -28,7 +28,7 @@
           </dt>
           <dt class="text-sm text-gray-500 text-center">
             <p class="font-medium">Orbit Class Description</p>
-            <p>{{ asteroid.orbital_data.orbit_class_description }}</p>
+            <p>{{ asteroid.orbital_data?.orbit_class.orbit_class_description  }}</p>
           </dt>
           <dt class="text-sm text-gray-500 text-center">
             <p class="font-medium">Orbit Class Range</p>
