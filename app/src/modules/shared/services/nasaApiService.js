@@ -5,7 +5,6 @@ const fetchNasaData = async (url) => {
             throw new Error("Error in response!");
         } else {
             const data = await response.json();
-            console.log(data);
             return data;
         }
     } catch (error) {
