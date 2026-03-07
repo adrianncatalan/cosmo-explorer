@@ -72,7 +72,7 @@ export default {
         return {
             loading: true,
             photos: [], // Array to store fetched photos
-            marsRoverPhotosEndpoint: 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=HgEXFJrEfmZo214o40xweiVBUEaedd96afUouznH',
+            marsRoverPhotosEndpoint: 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=REPLACED',
         }
     },
     methods: {
