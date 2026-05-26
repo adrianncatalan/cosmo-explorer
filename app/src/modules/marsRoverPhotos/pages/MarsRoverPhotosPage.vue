@@ -50,7 +50,7 @@
 <script>
 import { fetchNasaData } from '@/modules/shared/services/nasaApiService.js';
 
-const MARS_ENDPOINT = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=REPLACED';
+const MARS_ENDPOINT = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${import.meta.env.VITE_NASA_API_KEY}`;
 const PAGE_SIZE = 12;
 
 export default {

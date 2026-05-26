@@ -58,7 +58,7 @@
 <script>
 import { fetchNasaData } from '@/modules/shared/services/nasaApiService.js';
 
-const NEOWS_ENDPOINT = 'https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=REPLACED';
+const NEOWS_ENDPOINT = `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${import.meta.env.VITE_NASA_API_KEY}`;
 
 export default {
     data() {

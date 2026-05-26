@@ -41,7 +41,7 @@
 <script>
 import { fetchNasaData } from '@/modules/shared/services/nasaApiService.js';
 
-const APOD_ENDPOINT = 'https://api.nasa.gov/planetary/apod?api_key=REPLACED';
+const APOD_ENDPOINT = `https://api.nasa.gov/planetary/apod?api_key=${import.meta.env.VITE_NASA_API_KEY}`;
 
 export default {
     data() {
