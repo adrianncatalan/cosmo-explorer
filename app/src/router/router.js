@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/home',
     name: 'home',
-    component: () => import(/* webpackChunkName: "HomePage" */ '@/modules/info/pages/HomePage.vue')
+    component: () => import(/* webpackChunkName: "HomePage" */ '@/modules/home/pages/HomePage.vue')
   },
   {
     path: '/apod',
