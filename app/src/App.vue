@@ -1,18 +1,18 @@
 <template>
     <div class="min-h-screen flex flex-col">
-        <NavigationShared />
+        <AppNavigation />
         <main class="flex-grow">
             <router-view />
         </main>
-        <FooterShared />
+        <AppFooter />
     </div>
 </template>
 
 <script setup>
 import { defineAsyncComponent } from 'vue';
-import FooterShared from '@/modules/shared/components/FooterShared.vue';
+import AppFooter from '@/modules/shared/components/AppFooter.vue';
 
-const NavigationShared = defineAsyncComponent(() =>
-    import('@/modules/shared/components/NavigationShared.vue')
+const AppNavigation = defineAsyncComponent(() =>
+    import('@/modules/shared/components/AppNavigation.vue')
 );
 </script>
