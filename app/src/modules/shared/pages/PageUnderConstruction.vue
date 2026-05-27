@@ -3,7 +3,8 @@
         <main class="flex-grow flex flex-col justify-center max-w-7xl w-full
         mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex-shrink-0 flex justify-center">
-                <h2 class="flex justify-center text-4xl text-indigo-600 opacity-70 font-bold mt-4">Page under construction</h2>
+                <h2 class="flex justify-center text-4xl text-indigo-600 opacity-70 font-bold mt-4">Page under
+                    construction</h2>
             </div>
             <div class="py-16">
                 <div class="text-center">

@@ -1,7 +1,8 @@
 <template>
     <div class="bg-white shadow overflow-hidden sm:rounded-lg p-12">
         <div>
-            <h3 class="my-8 text-3xl leading-8 font-extrabold tracking-tight bg-gradient-to-r from-indigo-500 sm:text-4xl">
+            <h3
+                class="my-8 text-3xl leading-8 font-extrabold tracking-tight bg-gradient-to-r from-indigo-500 sm:text-4xl">
                 Asteroids NeoWs: Near Earth Object Web Service
             </h3>
             <h3 class="text-lg mt-2 text-center leading-6 font-medium text-indigo-600">
@@ -16,11 +17,8 @@
                 <p class="text-red-500">{{ error }}</p>
             </div>
             <dl v-else class="divide-y divide-gray-200">
-                <div
-                    v-for="asteroid in asteroids"
-                    :key="asteroid.id"
-                    class="py-4 sm:grid sm:py-5 sm:grid-cols-7 sm:gap-4"
-                >
+                <div v-for="asteroid in asteroids" :key="asteroid.id"
+                    class="py-4 sm:grid sm:py-5 sm:grid-cols-7 sm:gap-4">
                     <dt class="text-sm text-gray-500 text-center">
                         <p class="font-medium">Name</p>
                         <p>{{ asteroid.name }}</p>
@@ -55,29 +53,18 @@
     </div>
 </template>
 
-<script>
-import { fetchNasaData } from '@/modules/shared/services/nasaApiService.js';
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useNasaData } from '@/modules/shared/composables/useNasaData.js';
 
 const NEOWS_ENDPOINT = `https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${import.meta.env.VITE_NASA_API_KEY}`;
 
-export default {
-    data() {
-        return {
-            loading: true,
-            error: null,
-            asteroids: []
-        };
-    },
-    async mounted() {
-        try {
-            const response = await fetchNasaData(NEOWS_ENDPOINT);
-            this.asteroids = response.near_earth_objects;
-        } catch (error) {
-            this.error = 'Failed to load asteroid data. Please try again later.';
-            console.error(error);
-        } finally {
-            this.loading = false;
-        }
-    }
-};
+const asteroids = ref([]);
+const { loading, error, fetchData } = useNasaData();
+
+onMounted(async () => {
+    await fetchData(NEOWS_ENDPOINT, (data) => {
+        asteroids.value = data.near_earth_objects;
+    });
+});
 </script>

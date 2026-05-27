@@ -6,7 +6,6 @@
         <h3 class="text-lg m-4 text-center leading-6 font-medium text-indigo-600">
             Discover Mars through the lens of our Mars Rover Snapshots collection.
         </h3>
-
         <div v-if="loading" class="text-center mt-5">
             <p class="text-gray-500">Loading data...</p>
         </div>
@@ -25,7 +24,6 @@
                     <p class="mt-2 block text-sm font-medium text-gray-900 text-center">{{ photo.roverName }}</p>
                 </li>
             </ul>
-
             <div class="flex justify-center items-center gap-4 mb-12">
                 <button
                     :disabled="currentPage === 1"
@@ -47,44 +45,30 @@
     </div>
 </template>
 
-<script>
-import { fetchNasaData } from '@/modules/shared/services/nasaApiService.js';
+<script setup>
+import { ref, computed, onMounted } from 'vue';
+import { useNasaData } from '@/modules/shared/composables/useNasaData.js';
 
 const MARS_ENDPOINT = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=${import.meta.env.VITE_NASA_API_KEY}`;
 const PAGE_SIZE = 12;
 
-export default {
-    data() {
-        return {
-            loading: true,
-            error: null,
-            photos: [],
-            currentPage: 1,
-        };
-    },
-    computed: {
-        totalPages() {
-            return Math.ceil(this.photos.length / PAGE_SIZE);
-        },
-        visiblePhotos() {
-            const start = (this.currentPage - 1) * PAGE_SIZE;
-            return this.photos.slice(start, start + PAGE_SIZE);
-        }
-    },
-    async mounted() {
-        try {
-            const response = await fetchNasaData(MARS_ENDPOINT);
-            this.photos = response.photos.map(photo => ({
-                cameraFullName: photo.camera.full_name,
-                roverName: photo.rover.name,
-                imgSrc: photo.img_src
-            }));
-        } catch (error) {
-            this.error = 'Failed to load Mars Rover photos.';
-            console.error(error);
-        } finally {
-            this.loading = false;
-        }
-    }
-};
+const photos = ref([]);
+const currentPage = ref(1);
+const { loading, error, fetchData } = useNasaData();
+
+const totalPages = computed(() => Math.ceil(photos.value.length / PAGE_SIZE));
+const visiblePhotos = computed(() => {
+    const start = (currentPage.value - 1) * PAGE_SIZE;
+    return photos.value.slice(start, start + PAGE_SIZE);
+});
+
+onMounted(async () => {
+    await fetchData(MARS_ENDPOINT, (data) => {
+        photos.value = data.photos.map(photo => ({
+            cameraFullName: photo.camera.full_name,
+            roverName: photo.rover.name,
+            imgSrc: photo.img_src
+        }));
+    });
+});
 </script>

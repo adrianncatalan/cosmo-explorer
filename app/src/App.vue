@@ -8,14 +8,11 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { defineAsyncComponent } from 'vue';
 import FooterShared from '@/modules/shared/components/FooterShared.vue';
 
-export default {
-    components: {
-        NavigationShared: defineAsyncComponent(() => import('@/modules/shared/components/NavigationShared.vue')),
-        FooterShared
-    }
-};
+const NavigationShared = defineAsyncComponent(() =>
+    import('@/modules/shared/components/NavigationShared.vue')
+);
 </script>
