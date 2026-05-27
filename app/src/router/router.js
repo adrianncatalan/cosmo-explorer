@@ -21,9 +21,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "NeowsPage" */ '@/modules/neows/pages/NeowsPage.vue')
   },
   {
-    path: '/marsRoverPhotos',
-    name: 'marsRoverPhotos',
-    component: () => import(/* webpackChunkName: "MarsRoverPhotosPage" */ '@/modules/marsRoverPhotos/pages/MarsRoverPhotosPage.vue')
+    path: '/epic',
+    name: 'epic',
+    component: () => import(/* webpackChunkName: "EpicPage" */ '@/modules/epic/pages/EpicPage.vue')
   },
   {
     name: 'NoPageFound',
