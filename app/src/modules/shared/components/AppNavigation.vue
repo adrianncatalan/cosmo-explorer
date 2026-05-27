@@ -32,6 +32,6 @@ const navLinks = [
     { name: 'home', label: 'HOME' },
     { name: 'apod', label: 'APOD' },
     { name: 'neows', label: 'NEOWS' },
-    { name: 'marsRoverPhotos', label: 'MARS ROVER PHOTOS' },
+    { name: 'epic', label: 'EPIC' },
 ];
 </script>
