@@ -21,6 +21,6 @@
 <script setup>
 const nasaApiDocLink = 'https://api.nasa.gov/';
 const copyrights = 'All copyrights and intellectual property rights belong to NASA. This site is not affiliated with or endorsed by NASA.';
-const authorWebSite = 'Adrián Catalán | Web Development & Graphic Design';
+const authorWebSite = 'Adrián Catalán | Graphic Designer · Web Developer · Software Engineer';
 const currentYear = new Date().getFullYear();
 </script>
