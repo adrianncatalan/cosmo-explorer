@@ -19,13 +19,17 @@
                                 <transition name="fade">
                                     <img v-if="currentImage" :key="currentImage.url" :src="currentImage.url"
                                         :alt="currentImage.title"
-                                        class="absolute inset-0 w-full h-full object-cover object-center">
-                                    <div v-else class="absolute inset-0 w-full h-full bg-gray-100 animate-pulse" />
+                                        class="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-500"
+                                        :class="{ 'opacity-0': !imageReady }" @load="imageReady = true">
+                                    <div v-else class="absolute inset-0 w-full h-full bg-gray-200 animate-pulse" />
                                 </transition>
+                                <div v-if="currentImage && !imageReady"
+                                    class="absolute inset-0 bg-gray-200 animate-pulse" />
                             </div>
                             <figcaption class="mt-3 flex text-sm text-gray-500 min-h-5">
-                                <span v-if="currentImage" class="ml-2">
-                                    {{ currentImage.title }} — NASA
+                                <span v-if="currentImage && imageReady" class="ml-2">
+                                    {{ currentImage.title }} — <a href="https://images.nasa.gov/" target="_blank"
+                                        class="hover:text-gray-400 underline">NASA Image Library</a>
                                 </span>
                             </figcaption>
                         </figure>
@@ -36,8 +40,7 @@
                         class="mt-5 prose prose-indigo text-gray-500 mx-auto lg:max-w-none lg:row-start-1 lg:col-start-1">
                         <h2 class="text-base text-indigo-600 font-semibold tracking-wide">
                             Welcome to the website! Here, you'll find access to a wide range of information about space
-                            exploration,
-                            all sourced directly from the NASA API.
+                            exploration, all sourced directly from the NASA API.
                         </h2>
                         <br>
                         <p>
@@ -70,10 +73,12 @@ const NASA_IMAGES_ENDPOINT = 'https://images-api.nasa.gov/search?q=space&media_t
 const images = ref([]);
 const currentImage = ref(null);
 const currentIndex = ref(0);
+const imageReady = ref(false);
 let interval = null;
 
 function nextImage() {
     if (images.value.length === 0) return;
+    imageReady.value = false;
     currentIndex.value = (currentIndex.value + 1) % images.value.length;
     currentImage.value = images.value[currentIndex.value];
 }

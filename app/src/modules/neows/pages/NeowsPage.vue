@@ -10,8 +10,13 @@
             </h3>
         </div>
         <div class="mt-5 border-t border-gray-200">
-            <div v-if="loading" class="text-center mt-5">
-                <p class="text-gray-500">Loading data...</p>
+            <div v-if="loading" class="divide-y divide-gray-200 animate-pulse">
+                <div v-for="n in 8" :key="n" class="py-4 sm:grid sm:py-5 sm:grid-cols-7 sm:gap-4">
+                    <div v-for="col in 7" :key="col" class="flex flex-col items-center gap-2">
+                        <div class="h-3 bg-gray-200 rounded w-3/4" />
+                        <div class="h-3 bg-gray-200 rounded w-1/2" />
+                    </div>
+                </div>
             </div>
             <div v-else-if="error" class="text-center mt-5">
                 <p class="text-red-500">{{ error }}</p>
