@@ -14,13 +14,19 @@
                 <div class="relative lg:row-start-1 lg:col-start-2">
                     <div class="relative text-base mx-auto max-w-prose lg:max-w-none">
                         <figure>
-                            <div class="aspect-w-12 aspect-h-7 lg:aspect-none">
-                                <img class="rounded-lg shadow-lg object-cover object-center"
-                                    src="https://i.postimg.cc/VsRjKM6S/drinking-space-astronaut.jpg"
-                                    alt="Astronaut in space" width="1184" height="1376" loading="lazy">
+                            <div class="aspect-w-12 aspect-h-7 lg:aspect-none relative overflow-hidden rounded-lg shadow-lg"
+                                style="height: 400px;">
+                                <transition name="fade">
+                                    <img v-if="currentImage" :key="currentImage.url" :src="currentImage.url"
+                                        :alt="currentImage.title"
+                                        class="absolute inset-0 w-full h-full object-cover object-center">
+                                    <div v-else class="absolute inset-0 w-full h-full bg-gray-100 animate-pulse" />
+                                </transition>
                             </div>
-                            <figcaption class="mt-3 flex text-sm text-gray-500">
-                                <span class="ml-2">Designed by SynthWave1950</span>
+                            <figcaption class="mt-3 flex text-sm text-gray-500 min-h-5">
+                                <span v-if="currentImage" class="ml-2">
+                                    {{ currentImage.title }} — NASA
+                                </span>
                             </figcaption>
                         </figure>
                     </div>
@@ -36,14 +42,17 @@
                         <br>
                         <p>
                             The website fetches data from various endpoints offered by the NASA API to provide
-                            up-to-date
-                            information about space phenomena, celestial bodies, and astronomical events.
+                            up-to-date information about space phenomena, celestial bodies, and astronomical events.
+                            Images displayed on this page are sourced from the
+                            <a href="https://images.nasa.gov/" target="_blank"
+                                class="text-indigo-600 hover:text-indigo-500 underline">
+                                NASA Image and Video Library
+                            </a>.
                         </p>
                         <br>
                         <p>
                             Explore the platform to discover captivating content about the cosmos. Join the journey
-                            through
-                            the cosmos as we delve into the mysteries of space together.
+                            through the cosmos as we delve into the mysteries of space together.
                         </p>
                     </div>
                 </div>
@@ -51,3 +60,65 @@
         </div>
     </div>
 </template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+import { fetchNasaData } from '@/modules/shared/services/nasaApiService.js';
+
+const NASA_IMAGES_ENDPOINT = 'https://images-api.nasa.gov/search?q=space&media_type=image&page_size=20';
+
+const images = ref([]);
+const currentImage = ref(null);
+const currentIndex = ref(0);
+let interval = null;
+
+function nextImage() {
+    if (images.value.length === 0) return;
+    currentIndex.value = (currentIndex.value + 1) % images.value.length;
+    currentImage.value = images.value[currentIndex.value];
+}
+
+onMounted(async () => {
+    try {
+        const data = await fetchNasaData(NASA_IMAGES_ENDPOINT);
+        images.value = data.collection.items
+            .map(item => {
+                const preview = item.links?.find(l => l.rel === 'alternate' && l.href.includes('medium'))
+                    || item.links?.find(l => l.rel === 'preview');
+                if (!preview) return null;
+                return {
+                    url: preview.href,
+                    title: item.data[0].title,
+                };
+            })
+            .filter(Boolean);
+
+        if (images.value.length > 0) {
+            currentImage.value = images.value[0];
+            interval = setInterval(nextImage, 5000);
+        }
+    } catch (error) {
+        console.error('Failed to load NASA images:', error);
+    }
+});
+
+onUnmounted(() => {
+    clearInterval(interval);
+});
+</script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.8s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.fade-leave-active {
+    position: absolute;
+}
+</style>
